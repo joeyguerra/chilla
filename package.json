@@ -1,0 +1,39 @@
+{
+  "name": "chilla",
+  "version": "0.0.1",
+  "description": "Content negotiation, representational resources, can use with Express.",
+  "main": "chilla",
+  "scripts": {
+    "start": "nodemon examples/web/app.js port:5002",
+	"test":"tap ./tests/unit --stderr --tap"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ijoey/chilla.git"
+  },
+  "keywords": [
+    "REST",
+    "javascript",
+	"node",
+	"representational",
+	"content",
+	"negotiation"
+  ],
+  "author": "Joey Guerra",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ijoey/chilla/issues"
+  },
+  "homepage": "https://github.com/ijoey/chilla",
+  "devDependencies": {
+	   "tap":"*"
+  },
+  "dependencies": {
+    "graceful-fs": "*",
+    "mime": "*",
+    "cookies": "*",
+    "keygrip": "*",
+    "ejs": "*",
+    "moment": "*"
+  }
+}
