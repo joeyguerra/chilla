@@ -1,12 +1,13 @@
-var libPath = __dirname.replace('examples/web', '');
+var makePath = require('../../lib/pathMaker');
+var libPath = __dirname.replace(makePath('examples/web'), '');
 var port = process.env.PORT;
 var Chilla = require(libPath + 'lib/chilla');
 var Resource = require(libPath + 'lib/resource');
 var appPath = __dirname;
 var Fs = require('fs');
-var resourcesFolder = appPath + '/resources';
-var Url = require('url');
 var Path = require('path');
+var resourcesFolder = appPath + makePath('/resources');
+var Url = require('url');
 var Mime = require('mime');
 var Http = require('http');
 var chilla = null;
@@ -42,7 +43,7 @@ Web.server = Http.createServer(Web.filter);
 })();
 
 (function configureChilla(){
-	chilla = Chilla({appPath: appPath, themeRoot: appPath + '/themes/' + process.env.THEME})
+	chilla = Chilla({appPath: appPath, themeRoot: appPath + makePath('/themes/') + process.env.THEME});
 })();
 
 (function loadResourcesFromFolder(){
@@ -82,7 +83,7 @@ Web.server = Http.createServer(Web.filter);
 			return /\/public\//.test(request.url);
 		}
 		, execute: function staticServer(request, response, next){
-			var path = appPath + '/themes/' + process.env.THEME + request.url.replace('/public', '');
+			var path = appPath + makePath('/themes/') + process.env.THEME + request.url.replace(makePath('/public'), '');
 			Fs.exists(path, function(exists){
 				if(!exists) return next();
 				var parsed = Url.parse(request.url, true, true);

@@ -1,4 +1,5 @@
-var Resource = require(__dirname.replace('examples/web/resources', '') + 'lib/resource');
+var makePath = require('../../../lib/pathMaker');
+var Resource = require(__dirname.replace(makePath('examples/web/resources'), '') + makePath('lib/resource'));
 module.exports = function Index(endpoints){
 	var self = new Resource();
 	self.title = "Representational Web Site";
